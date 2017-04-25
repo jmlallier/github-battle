@@ -1,5 +1,6 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
+var PropTypes = require('prop-types');
 var USER_DATA = {
 	name: 'John-Michael LAllier',
 	img: 'https://avatars0.githubusercontent.com/u/15809946?v=3&s=460',
@@ -61,6 +62,12 @@ class Badge extends React.Component {
 		)
 	} 
 }
+
+Badge.propTypes = {
+	img: PropTypes.string.isRequired,
+	name: PropTypes.string.isRequired,
+	username: PropTypes.string.isRequired,
+};
 
 class FriendsContainer extends React.Component {
 	render() {

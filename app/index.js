@@ -1,5 +1,5 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
+var React     = require('react');
+var ReactDOM  = require('react-dom');
 var PropTypes = require('prop-types');
 var USER_DATA = {
 	name: 'John-Michael LAllier',
@@ -12,16 +12,14 @@ class App extends React.Component {
 	render() {
 		return (
 			<div>
-				<Badge user={USER_DATA} />
-				<FriendsContainer />
+				<Badge user={USER_DATA}/>
 				<Users list={[
-						{ name: 'Tyler', friend: true },
-						{ name: 'Ryan', friend: true },
-						{ name: 'Michael', friend: false },
-						{ name: 'Mikenzi', friend: false },
-						{ name: 'Jessica', friend: true },
-						{ name: 'Dan', friend: false } ]} 
-					/>
+					{name: 'Angelique', friend: true},
+					{name: 'Stephen', friend: true},
+					{name: 'Jonathan', friend: false},
+					{name: 'Bryan', friend: true},
+				]}
+				/>
 			</div>
 		)
 	}
@@ -30,7 +28,7 @@ class App extends React.Component {
 class Avatar extends React.Component {
 	render() {
 		return (
-			<img src={this.props.img} />
+			<img src={this.props.img}/>
 		)
 	}
 }
@@ -55,77 +53,59 @@ class Badge extends React.Component {
 	render() {
 		return (
 			<div>
-				<Avatar img={this.props.user.img} />
-				<Label name={this.props.user.name} />
-				<ScreenName username={this.props.user.username} />
+				<Avatar img={this.props.user.img}/>
+				<Label name={this.props.user.name}/>
+				<ScreenName username={this.props.user.username}/>
 			</div>
 		)
-	} 
+	}
 }
 
 Badge.propTypes = {
-	img: PropTypes.string.isRequired,
-	name: PropTypes.string.isRequired,
-	username: PropTypes.string.isRequired,
+	user: PropTypes.shape({
+		img: PropTypes.string.isRequired,
+		name: PropTypes.string.isRequired,
+		username: PropTypes.string.isRequired,
+	}),
 };
-
-class FriendsContainer extends React.Component {
-	render() {
-		var myName = 'John-Michael';
-		var friends = ['Angelique', 'Stephen', 'Bryan'];
-		return (
-			<div>
-				<h3>{myName}'s friends: </h3>
-				<ShowList names={friends} />
-			</div>
-		)
-	}	
-}
-
-class ShowList extends React.Component {
-	render() {
-		return (
-		<div>
-			<ul>
-				{this.props.names.map(function(friend){
-					return <li> {friend} </li>;
-				})}
-			</ul>
-		</div>
-			)
-	}
-}
 
 class Users extends React.Component {
 	render() {
-		var friends = this.props.list.filter(function(user) {
-			return user.friend===true;
+		var friends    = this.props.list.filter(function (user) {
+			return user.friend === true;
 		});
-		var nonFriends = this.props.list.filter(function(user) {
-			return user.friend!=true;
+		var nonFriends = this.props.list.filter(function (user) {
+			return user.friend != true;
 		});
 		return (
 			<div>
-			<h1>Friends</h1>
-			<ul>
-			{friends.map(function(user) {
-			 return <li key={user.name}>{user.name}</li>;
-			})
+				<h1>Friends</h1>
+				<ul>
+					{friends.map(function (user) {
+						return <li key={user.name}>{user.name}</li>;
+					})
+					}
+				</ul>
+				
+				<hr />
+				
+				<h1> Non Friends </h1>
+				<ul>
+					{nonFriends.map(function (user) {
+						return <li key={user.name}>{user.name}</li>;
+					})
+					}
+				</ul>
+			</div>
+		)
 	}
-	</ul>
-
-		<hr />
-
-		<h1> Non Friends </h1>
-			<ul>
-			{nonFriends.map(function(user) {
-			 return <li key={user.name}>{user.name}</li>;
-})
 }
-	</ul>        
-		</div>
-	)
-}
+
+Users.propTypes = {
+	list: PropTypes.arrayOf(PropTypes.shape({
+		name: PropTypes.string.isRequired,
+		friend: PropTypes.bool.isRequired
+	})),
 }
 
 

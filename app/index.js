@@ -4,7 +4,7 @@ var USER_DATA = {
 	name: 'John-Michael LAllier',
 	img: 'https://avatars0.githubusercontent.com/u/15809946?v=3&s=460',
 	username: 'jmlallier'
-}
+};
 require('./index.css');
 
 class App extends React.Component {

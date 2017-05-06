@@ -122,6 +122,16 @@ a {
 	font-weight: bold;
 }
 
+.reset {
+	border: none;
+	background-color: transparent;
+	color: #d0021b;
+	display: block;
+	width: 100%;
+	text-align: center;
+	cursor: pointer;
+}
+
 .home-container {
 	display: -webkit-box;
 	display: -ms-flexbox;

@@ -23,6 +23,47 @@ a {
 	margin    : 0 auto;
 }
 
+.row {
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-pack: distribute;
+	justify-content: space-around;
+}
+
+.column {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	width: 500px;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+}
+
+.column input {
+	border-radius: 3px;
+	margin: 10px 0;
+	padding: 5px;
+	width: 80%;
+	border: 1px solid rgba(0,0,0,0.43);
+	font-size: 16px;
+}
+
+.column label,
+.header {
+	text-align: center;
+	font-size: 30px;
+	font-weight: 200;
+}
+
 .languages {
 	display         : -webkit-box;
 	display         : -ms-flexbox;
